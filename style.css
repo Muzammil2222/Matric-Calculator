@@ -1,0 +1,108 @@
+/* Styling for the whole body */
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(200, 200, 255, 0.5));
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+/* Title styling */
+h2 {
+    color: rgba(0, 0, 50, 0.8);
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Form container */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Input fields in the form */
+form input {
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.4);
+    color: #333;
+    font-size: 1rem;
+    width: 180px;
+}
+
+/* Buttons in the form */
+form button, #calculate {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+    color: #333;
+    box-shadow: 0 4px 16px rgba(31, 38, 135, 0.2);
+}
+
+form button:hover, #calculate:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Matrix input box container */
+#input-boxes {
+    align-items: center;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Individual matrix input fields */
+.matrix-input {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255, 255, 255, 0.5);
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    font-size: 1rem;
+    color: #333;
+}
+
+/* Result text */
+#result {
+    font-size: 1.2rem;
+    color: rgba(0, 0, 50, 0.9);
+    margin-top: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    form input, form button, #calculate {
+        width: 150px;
+    }
+    .matrix-input {
+        width: 40px;
+        height: 40px;
+    }
+}
