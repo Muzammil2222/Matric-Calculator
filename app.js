@@ -1,30 +1,66 @@
-const boxes = document.querySelector("#input-boxes");
+const boxes1 = document.querySelector("#input-boxes1");
+const boxes2 = document.querySelector("#input-boxes2");
 const form = document.querySelector("#matrix-form");
-const calculateButton = document.querySelector("#calculate");
-const result = document.querySelector("#result");
+const sumBtn = document.querySelector("#sum");
+const resultDiv = document.querySelector("#result");
+
+let matrixLength;
+let operation = "add"; 
 
 form.addEventListener("submit", (event) => {
-    event.preventDefault();
+  event.preventDefault();
+  
+  matrixLength = Number(event.target.children[0].value);
 
-    const matrixLength = Number(event.target.children[0].value);
-    boxes.innerHTML = ""; // Clear the box for new input fields
+  boxes1.innerHTML = "";
+  boxes2.innerHTML = "";
 
-    // Create input fields based on matrix length
-    for(let i = 0; i < matrixLength; i++) {
-        for(let j = 0; j < matrixLength; j++) {
-            boxes.innerHTML += `<input type="number" class="matrix-input" style="width: 30px;" value="0">`;
-        } 
-        boxes.innerHTML += '<br>';
+  for (let i = 0; i < matrixLength; i++) {
+    for (let j = 0; j < matrixLength; j++) {
+      boxes1.innerHTML += `<input type="number" id="nehal-${i}${j}" style="width: 30px;" value="0">`;
+      boxes2.innerHTML += `<input type="number" id="shahab-${i}${j}" style="width: 30px;" value="0">`;
     }
+    boxes1.innerHTML += "<br>";
+    boxes2.innerHTML += "<br>";
+  }
 });
 
-calculateButton.addEventListener("click", () => {
-    let sum = 0;
-    const inputs = document.querySelectorAll(".matrix-input");
-    
-    inputs.forEach(input => {
-        sum += Number(input.value);
-    });
-
-    result.textContent = `The sum of all matrix elements is: ${sum}`;
+sumBtn.addEventListener("click", () => {
+  if (operation === "add") {
+    addMatrix();
+  } else {
+    minusMatrix();
+  }
 });
+
+const addMatrix = () => {
+  resultDiv.innerHTML = "";
+
+  for (let i = 0; i < matrixLength; i++) {
+    for (let j = 0; j < matrixLength; j++) {
+      const valueOfMatrix1 = document.querySelector(`#nehal-${i}${j}`).value;
+      const valueOfMatrix2 = document.querySelector(`#shahab-${i}${j}`).value;
+
+      const result = Number(valueOfMatrix1) + Number(valueOfMatrix2);
+
+      resultDiv.innerHTML += `<input disabled type="number" style="width: 30px;" value="${result}">`;
+    }
+    resultDiv.innerHTML += "<br/>";
+  }
+};
+
+const minusMatrix = () => {
+  resultDiv.innerHTML = "";
+
+  for (let i = 0; i < matrixLength; i++) {
+    for (let j = 0; j < matrixLength; j++) {
+      const valueOfMatrix1 = document.querySelector(`#nehal-${i}${j}`).value;
+      const valueOfMatrix2 = document.querySelector(`#shahab-${i}${j}`).value;
+
+      const result = Number(valueOfMatrix1) - Number(valueOfMatrix2);
+
+      resultDiv.innerHTML += `<input disabled type="number" style="width: 30px;" value="${result}">`;
+    }
+    resultDiv.innerHTML += "<br/>";
+  }
+};
